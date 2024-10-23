@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js" integrity="sha384-OoIbkvzsFFQAG88r+IqMAjyOtYDPGO0cqK5HF5Uosdy/zUEGySeAzytENMDynREd" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"
+        integrity="sha384-OoIbkvzsFFQAG88r+IqMAjyOtYDPGO0cqK5HF5Uosdy/zUEGySeAzytENMDynREd"
+        crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
 <body>
     <h1>Helloooooooooooooo</h1>
     <script>
         let socket = io()
+        socket.on('connect', () => {
+            console.log('Connected to the server');
+        })
+        // Handle connection errors
+        socket.on('connect_error', (err) => {
+            console.error('Connection error:', err.message);
+        });
+
+        // Handle general errors
+        socket.on('error', (err) => {
+            console.error('An error occurred:', err.message);
+        });
+
+        // Handle disconnect
+        socket.on('disconnect', (reason) => {
+            console.log('Disconnected from the server. Reason:', reason);
+        });
     </script>
 </body>
+
 </html>
