@@ -13,7 +13,7 @@
 <body>
     <h1>Helloooooooooooooo</h1>
     <script>
-        let socket = io()
+        let socket = io("https://test-vercel-liard-mu.vercel.app/")
         socket.on('connect', () => {
             console.log('Connected to the server');
         })
